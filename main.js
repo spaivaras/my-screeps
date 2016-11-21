@@ -6,9 +6,9 @@ var roleTower = require('role.tower');
 var taskHarvest = require('task.harvest');
 require('prototype.spawn')();
 
-var minBuilders = 5
-var minUpgrades = 5
-var minHarvesters = 5
+var minBuilders = 3;
+var minUpgrades = 3;
+var minHarvesters = 3;
 
 module.exports.loop = function () {
     for(var name in Memory.creeps) {
@@ -20,8 +20,8 @@ module.exports.loop = function () {
     
     for (var ir in Game.rooms) {
         var room = Game.rooms[ir];
-        
         var towers = room.find(FIND_STRUCTURES, {filter: (structure) => structure.structureType == STRUCTURE_TOWER});
+        
         if (towers.length > 0) {
             roleTower.run(towers[0]);
         }
@@ -34,9 +34,8 @@ module.exports.loop = function () {
         var builders = room.find(FIND_MY_CREEPS, {filter:  (creep) => creep.memory.role == 'builder'});
         var upgrades = room.find(FIND_MY_CREEPS, {filter: (creep) => creep.memory.role == 'upgrader'});
        
-       
         var newName = -1;
-        var energy =  room.energyCapacityAvailable;
+        var energy = room.energyCapacityAvailable;
     
         if (harvesters.length < minHarvesters) {
              newName = spawn.createBCreep(energy, "harvester");
@@ -51,7 +50,6 @@ module.exports.loop = function () {
             console.log('Spawning new creep: ' + newName, " at room: ", room.name);
         }
     }
-    
     
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];

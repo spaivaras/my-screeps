@@ -1,6 +1,5 @@
 var roleHarvester = require('role.harvester');
-
-var roleBuilder = {
+module.exports = {
     /** @param {Creep} creep **/
     run: function(creep) {
         var target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
@@ -14,5 +13,3 @@ var roleBuilder = {
         }
 	}
 };
-
-module.exports = roleBuilder;

@@ -1,4 +1,3 @@
-
 module.exports = function() {
 	Spawn.prototype.createBCreep = function (energy, role) {
 		var sets = Math.floor(energy / 200);

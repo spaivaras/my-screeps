@@ -1,4 +1,4 @@
-var roleUpgrader = {
+module.exports = {
     /** @param {Creep} creep **/
     run: function(creep) {
         if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
@@ -6,5 +6,3 @@ var roleUpgrader = {
         }
 	}
 };
-
-module.exports = roleUpgrader;

@@ -1,12 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('task.harvest');
- * mod.thing == 'a thing'; // true
- */
-
 module.exports = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
@@ -15,17 +6,12 @@ module.exports = {
 		}
 
 		if (creep.memory.refuel) {
-
-
-
 			var minerals = _.sum(creep.carry) - creep.carry.energy;
-			//console.log(creep.name, " MInerals: ", minerals);
 		    if (minerals > 0) {
 		        var container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
 		            filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER)
 		        });
 		       
-		        
 		        for (min in RESOURCES_ALL) {
 		            if (RESOURCES_ALL[min] != RESOURCE_ENERGY && creep.carry[RESOURCES_ALL[min]] != undefined && creep.carry[RESOURCES_ALL[min]] > 0) {
 		                var stat = creep.transfer(container, RESOURCES_ALL[min]);
